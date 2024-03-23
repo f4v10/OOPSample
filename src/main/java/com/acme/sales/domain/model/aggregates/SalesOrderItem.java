@@ -10,6 +10,9 @@ public class SalesOrderItem {
     private boolean dispatched;
 
     public SalesOrderItem(int quantity, Long productId, double unitPrice) {
+        if (quantity == 0) throw new IllegalArgumentException("Quantity must be greater than 0");
+        if (productId == 0) throw new IllegalArgumentException("Product ID must be greater than 0");
+        if (unitPrice <= 0) throw new IllegalArgumentException("Unit price must be greater than 0");
         this.itemId = UUID.randomUUID();
         this.quantity = quantity;
         this.productId = productId;
